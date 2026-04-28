@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 
 const API_URL = import.meta.env.VITE_API_URL || "/api/latest";
-const REFRESH_INTERVAL_MS = 60_000;
+const REFRESH_INTERVAL_MS = 3_600_000;
 
 const METRIC_CONFIG = [
   { key: "grid_power_kw", label: "Grid Power", unit: "kW" },
@@ -63,7 +63,7 @@ function App() {
         <p className="eyebrow">Gridle local monitor</p>
         <h1>Latest residential energy values</h1>
         <p className="subtitle">
-          React UI connected to an API endpoint. Refreshes every 60 seconds.
+          React UI connected to an API endpoint. Refreshes every 1 hour.
         </p>
         <div className="hero-meta">
           <span>
