@@ -78,4 +78,4 @@ streamlit run app.py
 - Set `GRIDLE_API_KEY` in your environment (or local `.env`) before running the apps.
 - Gridle API rate limit is 1 request per second with burst 2.
 - Maximum supported range is 31 days.
-- Deployment trigger: 2026-04-28
+- Deployment trigger: 2026-04-28 (with FastAPI entrypoints)
