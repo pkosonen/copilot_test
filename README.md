@@ -1,0 +1,56 @@
+# Gridle residential clients
+
+This repository now includes two web clients for the Gridle residential public API.
+
+## 1) React UI + Python API server (latest values)
+
+### What it does
+
+- Python FastAPI server exposes `/latest` on localhost.
+- React UI fetches from `http://localhost:8000/latest`.
+- Dashboard auto-refreshes every 60 seconds and shows latest measurement values.
+
+### Run it
+
+1. Install Python dependencies:
+
+   ```bash
+   pip install -r requirements.txt
+   ```
+
+2. Start the Python API server:
+
+   ```bash
+   uvicorn api_server:app --host 127.0.0.1 --port 8000
+   ```
+
+3. In a new terminal, install frontend dependencies:
+
+   ```bash
+   npm --prefix frontend install
+   ```
+
+4. Start the React UI:
+
+   ```bash
+   npm --prefix frontend run dev -- --host 127.0.0.1 --port 5173
+   ```
+
+5. Open `http://127.0.0.1:5173`.
+
+## 2) Streamlit client (time series explorer)
+
+The original Streamlit app is still available in `app.py`.
+
+Run it with:
+
+```bash
+streamlit run app.py
+```
+
+## Notes
+
+- The provided API key is wired in as the default fallback for immediate local use.
+- You can override with `GRIDLE_API_KEY` in your environment.
+- Gridle API rate limit is 1 request per second with burst 2.
+- Maximum supported range is 31 days.

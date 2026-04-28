@@ -1,0 +1,157 @@
+@import url("https://fonts.googleapis.com/css2?family=Syne:wght@500;700;800&family=IBM+Plex+Mono:wght@400;500&display=swap");
+
+:root {
+  --bg-start: #f4ecdc;
+  --bg-end: #d6efe5;
+  --ink: #111111;
+  --ink-soft: rgba(17, 17, 17, 0.74);
+  --card-bg: rgba(255, 255, 255, 0.78);
+  --card-border: rgba(17, 17, 17, 0.08);
+  --accent: #d95d39;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html,
+body,
+#root {
+  margin: 0;
+  min-height: 100%;
+}
+
+body {
+  background:
+    radial-gradient(circle at 10% 10%, rgba(217, 93, 57, 0.14), transparent 35%),
+    radial-gradient(circle at 85% 20%, rgba(36, 115, 101, 0.15), transparent 42%),
+    linear-gradient(160deg, var(--bg-start), var(--bg-end));
+  color: var(--ink);
+  font-family: "Syne", sans-serif;
+}
+
+.page {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 2rem 1rem 3rem;
+}
+
+.hero {
+  background: rgba(255, 250, 245, 0.72);
+  border: 1px solid var(--card-border);
+  border-radius: 24px;
+  box-shadow: 0 20px 60px rgba(17, 17, 17, 0.08);
+  padding: 1.4rem;
+  animation: enter 400ms ease;
+}
+
+.eyebrow {
+  margin: 0;
+  color: var(--ink-soft);
+  font-family: "IBM Plex Mono", monospace;
+  font-size: 0.82rem;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+}
+
+h1 {
+  margin: 0.4rem 0 0;
+  font-size: clamp(1.8rem, 5vw, 3.2rem);
+  line-height: 0.95;
+}
+
+.subtitle {
+  margin: 0.8rem 0 0;
+  color: var(--ink-soft);
+}
+
+.hero-meta {
+  margin-top: 1rem;
+  display: grid;
+  gap: 0.6rem;
+  font-family: "IBM Plex Mono", monospace;
+  font-size: 0.85rem;
+}
+
+.hero-meta button {
+  justify-self: start;
+  border: none;
+  border-radius: 999px;
+  background: var(--ink);
+  color: #fff;
+  font-family: inherit;
+  padding: 0.55rem 1rem;
+  cursor: pointer;
+}
+
+.hero-meta button:disabled {
+  opacity: 0.65;
+  cursor: not-allowed;
+}
+
+.error {
+  margin: 1rem 0 0;
+  color: #9f1010;
+  font-family: "IBM Plex Mono", monospace;
+}
+
+.grid {
+  margin-top: 1rem;
+  display: grid;
+  grid-template-columns: repeat(1, minmax(0, 1fr));
+  gap: 0.8rem;
+}
+
+.card {
+  background: var(--card-bg);
+  border: 1px solid var(--card-border);
+  border-radius: 18px;
+  padding: 1rem;
+  backdrop-filter: blur(8px);
+  animation: enter 500ms ease;
+}
+
+.label {
+  margin: 0;
+  color: var(--ink-soft);
+  font-size: 0.9rem;
+}
+
+.value {
+  margin: 0.35rem 0 0;
+  font-size: clamp(1.5rem, 4vw, 2.4rem);
+  line-height: 1;
+}
+
+.value span {
+  margin-left: 0.4rem;
+  font-size: 1rem;
+  color: var(--accent);
+}
+
+@keyframes enter {
+  from {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@media (min-width: 720px) {
+  .page {
+    padding: 2.2rem 1.4rem 3.2rem;
+  }
+
+  .grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (min-width: 1024px) {
+  .grid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+}
