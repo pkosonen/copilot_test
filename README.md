@@ -46,6 +46,22 @@ This repository now includes two web clients for the Gridle residential public A
 
 6. Open `http://127.0.0.1:5173`.
 
+### Vercel deployment notes
+
+- Root cause of previous failure: the frontend was calling `localhost`, which does not exist in Vercel runtime.
+- The frontend now defaults to `/api/latest`.
+- For Vercel deployment, set project root to `frontend`.
+- Add environment variable `GRIDLE_API_KEY` in Vercel project settings.
+- Vercel will serve `frontend/api/latest.js` as a serverless function and keep the key server-side.
+
+Optional local override for frontend-only development:
+
+```bash
+cp frontend/env.local.example frontend/.env.local
+```
+
+This points the frontend to a local Python API at `http://127.0.0.1:8000/latest`.
+
 ## 2) Streamlit client (time series explorer)
 
 The original Streamlit app is still available in `app.py`.

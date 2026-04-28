@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 
-const API_BASE_URL = "http://localhost:8000";
+const API_URL = import.meta.env.VITE_API_URL || "/api/latest";
 const REFRESH_INTERVAL_MS = 60_000;
 
 const METRIC_CONFIG = [
@@ -34,7 +34,7 @@ function App() {
     setLoading(true);
 
     try {
-      const response = await fetch(`${API_BASE_URL}/latest`);
+      const response = await fetch(API_URL);
       if (!response.ok) {
         throw new Error(`Request failed: ${response.status}`);
       }
@@ -63,7 +63,7 @@ function App() {
         <p className="eyebrow">Gridle local monitor</p>
         <h1>Latest residential energy values</h1>
         <p className="subtitle">
-          React UI connected to your localhost Python server. Refreshes every 60 seconds.
+          React UI connected to an API endpoint. Refreshes every 60 seconds.
         </p>
         <div className="hero-meta">
           <span>
