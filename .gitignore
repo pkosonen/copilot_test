@@ -1,0 +1,7 @@
+__pycache__/
+.pytest_cache/
+.streamlit/
+*.pyc
+.venv/
+node_modules/
+dist/
