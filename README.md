@@ -48,11 +48,11 @@ This repository now includes two web clients for the Gridle residential public A
 
 ### Vercel deployment notes
 
-- Root cause of previous failure: the frontend was calling `localhost`, which does not exist in Vercel runtime.
+- Root cause of previous failure: Vercel tried to auto-detect Python at repo root.
+- This repo now includes a root `vercel.json` that forces a Vite frontend build and serves API from root `api/latest.js`.
 - The frontend now defaults to `/api/latest`.
-- For Vercel deployment, set project root to `frontend`.
 - Add environment variable `GRIDLE_API_KEY` in Vercel project settings.
-- Vercel will serve `frontend/api/latest.js` as a serverless function and keep the key server-side.
+- Vercel will serve `api/latest.js` as a serverless function and keep the key server-side.
 
 Optional local override for frontend-only development:
 
