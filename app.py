@@ -11,9 +11,6 @@ from dotenv import load_dotenv
 from gridle_client import GridleApiError, GridleClient, MeasurementQuery
 
 
-DEFAULT_API_KEY = "rtD5RveEp41L1rB6F4v572QnKrWKiIg86Vln2qCz"
-
-
 load_dotenv()
 
 DEFAULT_METRICS = [
@@ -127,7 +124,7 @@ def main() -> None:
         st.header("Connection")
         api_key = st.text_input(
             "API key",
-            value=os.getenv("GRIDLE_API_KEY", DEFAULT_API_KEY),
+            value=os.getenv("GRIDLE_API_KEY", ""),
             type="password",
         )
         use_range = st.toggle("Use custom time range", value=False)

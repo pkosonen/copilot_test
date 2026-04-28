@@ -18,25 +18,33 @@ This repository now includes two web clients for the Gridle residential public A
    pip install -r requirements.txt
    ```
 
-2. Start the Python API server:
+2. Configure environment variables (recommended in a local `.env` file):
+
+   ```bash
+   cp env.example .env
+   ```
+
+   Then set `GRIDLE_API_KEY` in `.env`.
+
+3. Start the Python API server:
 
    ```bash
    uvicorn api_server:app --host 127.0.0.1 --port 8000
    ```
 
-3. In a new terminal, install frontend dependencies:
+4. In a new terminal, install frontend dependencies:
 
    ```bash
    npm --prefix frontend install
    ```
 
-4. Start the React UI:
+5. Start the React UI:
 
    ```bash
    npm --prefix frontend run dev -- --host 127.0.0.1 --port 5173
    ```
 
-5. Open `http://127.0.0.1:5173`.
+6. Open `http://127.0.0.1:5173`.
 
 ## 2) Streamlit client (time series explorer)
 
@@ -50,7 +58,7 @@ streamlit run app.py
 
 ## Notes
 
-- The provided API key is wired in as the default fallback for immediate local use.
-- You can override with `GRIDLE_API_KEY` in your environment.
+- The API key is no longer stored in source code.
+- Set `GRIDLE_API_KEY` in your environment (or local `.env`) before running the apps.
 - Gridle API rate limit is 1 request per second with burst 2.
 - Maximum supported range is 31 days.

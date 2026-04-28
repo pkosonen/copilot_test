@@ -10,9 +10,6 @@ from fastapi.middleware.cors import CORSMiddleware
 from gridle_client import GridleApiError, GridleClient
 
 
-DEFAULT_API_KEY = "rtD5RveEp41L1rB6F4v572QnKrWKiIg86Vln2qCz"
-
-
 load_dotenv()
 
 app = FastAPI(title="Gridle Latest Values API", version="1.0.0")
@@ -27,7 +24,7 @@ app.add_middleware(
 
 
 def get_latest_measurement() -> dict[str, Any]:
-    api_key = os.getenv("GRIDLE_API_KEY", DEFAULT_API_KEY)
+    api_key = os.getenv("GRIDLE_API_KEY", "")
     if not api_key:
         raise HTTPException(status_code=500, detail="GRIDLE_API_KEY is missing")
 
